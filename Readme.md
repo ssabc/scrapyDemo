@@ -1,3 +1,10 @@
+<!--
+ * @Author: zhaoshan
+ * @Date: 2022-08-03 11:46:00
+ * @LastEditTime: 2022-08-03 14:09:09
+ * @LastEditors: zhaoshan
+ * @Description: 
+-->
 ## 命令行操作
 
 ## 安装
@@ -20,15 +27,21 @@
 
 ## 实战
 
+### 图示
+
+#### 爬出的JSON数据
+![crawl-data](./readmeImgs/crawl-data.png)
+
+#### 爬出的数据在客户端的应用
+![scrapy-client](./readmeImgs/scrapy-client.jpg)
+
+
 ```shell
 $ scrapy startproject huabaike # 创建一个scrapy项目
 ```
 ```shell
 $ scrapy genspider home “huabaike.com” # 生成一个爬虫 scrapy genspider 爬虫文件名称 要爬取的域名
 ```
-
-
-
 ## 制作爬虫开始爬取网页 spiders/home.py
   ```python
    class HomeSpider(scrapy.Spider):
