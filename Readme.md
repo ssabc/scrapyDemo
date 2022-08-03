@@ -1,102 +1,25 @@
-<!--
- * @Author: zhaoshan
- * @Date: 2022-08-03 11:46:00
- * @LastEditTime: 2022-08-03 14:09:09
- * @LastEditors: zhaoshan
- * @Description: 
--->
-## 命令行操作
 
-## 安装
-	python官网：https://www.python.org/downloads/
-```shell
-  $ pip install scrapy # 安装scrapy包
-```
-## 使用
-```shell
-	$ scrapy startproject mySpider # 创建一个爬虫项目
-```
-```shell
-	$ scrapy genspider demo "demo.cn" # 生成一个爬虫
-```
-##  运行
-```shell
-	$ scrapy crawl demo # demo爬虫的名字
-```
+## 项目应用流程
+
+>1. 用python的scrapy框架从花百科网站爬取数据
+>2. 将爬取的数据存入MongoDB数据库
+>3. 用express框架生成服务端项目并启动，并创建一个从数据库中获取爬取数据的接口
+>4. 创建一个微信小程序应用，请求服务端接口
 
 
-## 实战
+## 项目文件夹说明
+> + client-wechat-mini： 微信小程序项目源码
+> + service：服务端项目源码
+> + spider： scrapy爬虫项目源码
+> + mongoDB: mongoDB数据库说明
 
-### 图示
+## Demo实战图示
 
-#### 爬出的JSON数据
-![crawl-data](./readmeImgs/crawl-data.png)
+> + 爬取数据的原网站
+[花百科网站-景天科](https://www.huabaike.com/jingtian/)
+![huabaike-home](./huabaike-home.jpg)
+> + 爬出的JSON数据
+![crawl-data](./crawl-data.png)
+> + 爬出的数据在客户端的应用
+![scrapy-client](./scrapy-client.jpg)
 
-#### 爬出的数据在客户端的应用
-![scrapy-client](./readmeImgs/scrapy-client.jpg)
-
-
-```shell
-$ scrapy startproject huabaike # 创建一个scrapy项目
-```
-```shell
-$ scrapy genspider home “huabaike.com” # 生成一个爬虫 scrapy genspider 爬虫文件名称 要爬取的域名
-```
-## 制作爬虫开始爬取网页 spiders/home.py
-  ```python
-   class HomeSpider(scrapy.Spider):
-    name = 'home'
-    allowed_domains = ['huabaike.com']
-    start_urls = ['https://www.huabaike.com/jingtian/']
-
-    def parse(self, response):
-        for quoteUl in response.css('div.zhiwuImg ul'):
-            for quoteli in quoteUl.css('li'):
-                yield {
-                    'name': quoteli.css('a::text').extract_first(),
-                    'img': quoteli.css('a img::attr(src)').extract()[0]
-                }
-  ```
-## 设计管道存储爬取内容 pelines.py
-
-```python
-import json
-import codecs
-# useful for handling different item types with a single interface
-from itemadapter import ItemAdapter
-
-class DemoPipeline:
-    # def process_item(self, item, spider):
-    #     return item
-    def __init__(self):
-        self.file = codecs.open('data.json', 'w', encoding='utf-8')
-
-    def process_item(self, item, spider):
-        line = json.dumps(dict(item), ensure_ascii=False) + ",\n"
-        self.file.write(line)
-        return item 
-```  
-
-## 修改配置 settings.py
-
-避免在程序运行的时候打印log日志信息
-
-```js
- LOG_LEVEL = 'WARNING' 
- ROBOTSTXT_OBEY = False
-```
-
-开启管道
-```js
-ITEM_PIPELINES = {
-    'demo.pipelines.DemoPipeline': 300,
-}
-```
-
-## 运行得到数据应用数据 
-
-// 在命令中运行爬虫
-
-```shell
-$ scrapy crawl home # qb爬虫的名字
-```
