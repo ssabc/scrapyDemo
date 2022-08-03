@@ -1,0 +1,12 @@
+<!--index.wxml-->
+<view class="container">
+  <view wx:if="dataJson.length > 0" class="cells">
+    <view class="cell" wx:for="{{dataJson}}" wx:key="name">
+      <image class="img" mode="aspectFit" src="{{item.img}}" />
+      <text> {{item.name}} </text>
+    </view>
+  </view>
+  <view class="no-data-wrap" wx:if="dataJson.length == 0">
+    暂无数据
+  </view>
+</view>

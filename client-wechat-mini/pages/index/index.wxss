@@ -1,0 +1,28 @@
+/**index.wxss**/
+.cells {
+  display: flex;
+  justify-content: space-between;
+  padding: 10rpx;
+  flex-wrap: wrap;
+}
+.cell {
+  width: 350rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
+  margin-bottom: 10rpx;
+  border-radius: 10rpx;
+}
+image {
+  width: 300rpx;
+  height: 180px;
+}
+.no-data-wrap {
+  color: #999;
+  text-align: center;
+  padding: 40rpx;
+  font-size: 12px;
+}
