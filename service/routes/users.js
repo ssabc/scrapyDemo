@@ -1,90 +1,27 @@
+/*
+ * @Author: zhaoshan
+ * @Date: 2022-07-30 11:03:10
+ * @LastEditTime: 2022-08-03 16:27:35
+ * @LastEditors: zhaoshan
+ * @Description: 
+ */
 var express = require('express');
 var router = express.Router();
+var appModel = require("../lib/appMode");
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
   const resData = {
     code: '000000',
-    data: [{"name": "冬美人", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201706/595229eb0d3ef.jpg"},
-    {"name": "多肉植物雪莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201706/5950a3d5ca42f.jpg"},
-    {"name": "筒叶花月", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201706/594a237fa0c1e.jpg"},
-    {"name": "仙女杯", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201705/5923f427585f4.jpg"},
-    {"name": "塔花瓦松", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201704/58feb36341f79.jpg"},
-    {"name": "秋丽", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201702/58ae578f6806c.jpg"},
-    {"name": "密叶莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201702/58ad6f9f89fc8.jpg"},
-    {"name": "红稚莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201702/58ad664502e05.jpg"},
-    {"name": "球松", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201704/58df46212bac8.jpg"},
-    {"name": "丽娜莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201610/580dd56360603.jpg"},
-    {"name": "千羽鹤", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201607/579afb8417ca7.jpg"},
-    {"name": "玉树", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201607/578db5ff4e6e9.jpg"},
-    {"name": "千佛手", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201607/577b7ad40a957.jpg"},
-    {"name": "摩氏玉莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/576cbc289235d.jpg"},
-    {"name": "小米星", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/5760e82613e73.jpg"},
-    {"name": "钱串", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/575f95ac1f96f.jpg"},
-    {"name": "小人祭", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/575f93a3a817d.jpg"},
-    {"name": "小球玫瑰", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/575e3f62a7282.jpg"},
-    {"name": "姬秋丽", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/57579c396f382.jpg"},
-    {"name": "若歌诗", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/574fdc1fa306c.jpg"},
-    {"name": "静夜", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201606/574fa022312c1.jpg"},
-    {"name": "垂盆草", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201605/573ad3b62e253.jpg"},
-    {"name": "凝脂莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201605/5729b20929826.jpg"},
-    {"name": "山地玫瑰", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/5723269753c0d.jpg"},
-    {"name": "小玉", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/5723224f8372d.jpg"},
-    {"name": "红粉台阁", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/57231a82eb76f.jpg"},
-    {"name": "桃之卵", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/5721cb674fa02.jpg"},
-    {"name": "佛座莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/5721ca7d0e029.jpg"},
-    {"name": "女雏", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/571b336703694.jpg"},
-    {"name": "姬胧月", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/57071d3bdf7d1.jpg"},
-    {"name": "黄金万年草", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/570702fc512da.jpg"},
-    {"name": "瓦松", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201604/56fe27e7b1cd3.jpg"},
-    {"name": "落地生根", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201602/56c54a72e0f4c.jpg"},
-    {"name": "宫灯长寿花", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201602/56b05e71ee8e9.jpg"},
-    {"name": "燕子掌", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201601/56a09d0dddbbb.jpg"},
-    {"name": "白花小松", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201601/569ede3f99800.jpg"},
-    {"name": "醉美人", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/567be9d91ce7b.jpg"},
-    {"name": "熊童子", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fe90e505ba.jpg"},
-    {"name": "星美人", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fe46e6a01d.jpg"},
-    {"name": "长寿花", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fdf50870da.jpg"},
-    {"name": "大叶不死鸟", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fdc6925b94.jpg"},
-    {"name": "铭月", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fdb523ec40.jpg"},
-    {"name": "特玉莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fdbea3946b.jpg"},
-    {"name": "大和锦", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fda2da8aae.jpg"},
-    {"name": "初恋", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fe029931a0.jpg"},
-    {"name": "唐印", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fd6eee72a6.jpg"},
-    {"name": "薄雪万年草", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fd4577345f.jpg"},
-    {"name": "鲁氏石莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fd4700095e.jpg"},
-    {"name": "白凤", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fd252ad220.jpg"},
-    {"name": "蓝石莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fce57b2580.jpg"},
-    {"name": "卡梅奥", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb86fc3b32.jpg"},
-    {"name": "霜之朝", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb85596cf3.jpg"},
-    {"name": "蛛丝卷绢", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb79b7c698.jpg"},
-    {"name": "锦晃星", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb421ec797.jpg"},
-    {"name": "绒针", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb45641c7c.jpg"},
-    {"name": "吉娃莲", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb240ad4fd.jpg"},
-    {"name": "若绿", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb5ba1719e.jpg"},
-    {"name": "姬星美人", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fb09946661.jpg"},
-    {"name": "千代田之松", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565faff9202e5.jpg"},
-    {"name": "火祭", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565faeefd2a76.jpg"},
-    {"name": "子持年华", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fae7745926.jpg"},
-    {"name": "黄丽", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fac10d568e.jpg"},
-    {"name": "花月夜", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fa856d61cc.jpg"},
-    {"name": "花月锦", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fa6ef3eaee.jpg"},
-    {"name": "月兔耳", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/567e4262e3d64.jpg"},
-    {"name": "月光", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fa54573325.jpg"},
-    {"name": "虹之玉", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fa540e8b1d.jpg"},
-    {"name": "黑王子", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565feee87e7af.jpg"},
-    {"name": "玉吊钟", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fa144bb001.jpg"},
-    {"name": "黑法师", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565fa180603ec.jpg"},
-    {"name": "银星", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565f9b66a2f00.jpg"},
-    {"name": "茜之塔", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565f92dc8d23b.jpg"},
-    {"name": "白牡丹", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201512/565f8eb00d336.jpg"},
-    {"name": "紫珍珠", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201511/5647d466368c1.jpg"},
-    {"name": "玉蝶", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201511/56472b4f404a9.jpg"},
-    {"name": "八千代", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201511/564720040fbad.jpg"},
-    {"name": "八宝景天", "img": "https://img.huabaike.com/uploads/allimg/sltimg/201511/56471ec9e98f8.jpg"},
-    ]
+    data: [], //await
   }
-  res.send(resData);
+  appModel.find().exec(function(err, data) {
+    if (!err) {
+      console.log('----', data);
+      resData.data = data
+      res.send(resData);
+    }
+  });
 });
 
 module.exports = router;

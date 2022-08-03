@@ -1,7 +1,7 @@
 '''
 Author: zhaoshan
 Date: 2022-06-30 17:16:06
-LastEditTime: 2022-08-03 11:50:32
+LastEditTime: 2022-08-03 16:14:04
 LastEditors: zhaoshan
 Description: 
 '''
@@ -21,8 +21,8 @@ NEWSPIDER_MODULE = 'huabaike.spiders'
 
 MONGODB_HOST = 'localhost'
 MONGODB_PORT = 27017
-MONGODB_NAME = 'spider'
-MONGODB_DOCNAME = 'eastmoney_news'
+MONGODB_NAME = 'huabaike'
+MONGODB_DOCNAME = 'jingtians'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'huabaike (+http://www.yourdomain.com)'
