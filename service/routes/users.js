@@ -1,10 +1,3 @@
-/*
- * @Author: zhaoshan
- * @Date: 2022-07-30 11:03:10
- * @LastEditTime: 2022-08-03 16:27:35
- * @LastEditors: zhaoshan
- * @Description: 
- */
 var express = require('express');
 var router = express.Router();
 var appModel = require("../lib/appMode");

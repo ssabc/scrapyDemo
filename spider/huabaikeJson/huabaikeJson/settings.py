@@ -1,11 +1,11 @@
 '''
 Author: zhaoshan
-Date: 2022-06-30 17:16:06
-LastEditTime: 2022-08-03 16:14:04
+Date: 2022-08-04 10:35:40
+LastEditTime: 2022-08-04 10:37:28
 LastEditors: zhaoshan
 Description: 
 '''
-# Scrapy settings for huabaike project
+# Scrapy settings for huabaikeJson project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -14,23 +14,20 @@ Description:
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = 'huabaike'
+BOT_NAME = 'huabaikeJson'
 
-SPIDER_MODULES = ['huabaike.spiders']
-NEWSPIDER_MODULE = 'huabaike.spiders'
+SPIDER_MODULES = ['huabaikeJson.spiders']
+NEWSPIDER_MODULE = 'huabaikeJson.spiders'
 
-MONGODB_HOST = 'localhost'
-MONGODB_PORT = 27017
-MONGODB_NAME = 'huabaike'
-MONGODB_DOCNAME = 'jingtians'
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'huabaike (+http://www.yourdomain.com)'
+#USER_AGENT = 'huabaikeJson (+http://www.yourdomain.com)'
 
 # Obey robots.txt rules
 LOG_LEVEL = 'WARNING' 
 
 ROBOTSTXT_OBEY = False
+
 
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
@@ -50,33 +47,33 @@ ROBOTSTXT_OBEY = False
 #TELNETCONSOLE_ENABLED = False
 
 # Override the default request headers:
-# DEFAULT_REQUEST_HEADERS = {
+#DEFAULT_REQUEST_HEADERS = {
 #   'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
 #   'Accept-Language': 'en',
-# }
+#}
 
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
-# SPIDER_MIDDLEWARES = {
-#    'huabaike.middlewares.HuabaikeSpiderMiddleware': 543,
-# }
+#SPIDER_MIDDLEWARES = {
+#    'huabaikeJson.middlewares.HuabaikejsonSpiderMiddleware': 543,
+#}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    'huabaike.middlewares.HuabaikeDownloaderMiddleware': 543,
-# }
+#DOWNLOADER_MIDDLEWARES = {
+#    'huabaikeJson.middlewares.HuabaikejsonDownloaderMiddleware': 543,
+#}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
-# EXTENSIONS = {
+#EXTENSIONS = {
 #    'scrapy.extensions.telnet.TelnetConsole': None,
-# }
+#}
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'huabaike.pipelines.HuabaikePipeline': 300,
+   'huabaikeJson.pipelines.HuabaikejsonPipeline': 300,
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
